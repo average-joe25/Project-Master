@@ -10,8 +10,8 @@ export default function Navbar() {
         <div className="navbar">
             <ul>
                 <li className='logo'><a href='/'><img src={logo} alt="logo"/></a></li>
-                {!user&&<li><Link to='/login' activeClassName='active'>Login</Link></li>}
-                {!user&&<li><Link to='/signup' activeClassName='active'>Signup</Link></li>}
+                {!user&&<li><Link to='/login' activeclassname='active'>Login</Link></li>}
+                {!user&&<li><Link to='/signup' activeclassname='active'>Signup</Link></li>}
                 {user&&!isPending&&<li><btn className='btn' onClick={logout}>Logout</btn ></li>}
                 {isPending&&<li><btn className='btn' disabled>Logging out</btn ></li>}
              </ul>

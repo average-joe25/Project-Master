@@ -15,12 +15,12 @@ export default function SideBar() {
                 </div>
                 <div className='links'>
                     <ul>
-                        <li><NavLink to='/' activeClassName='active'>
+                        <li><NavLink to='/' activeclassname='active'>
                             <img src={DashboardIcon} alt="dashboard icon"/>
                             <p>Dashboard</p>
                             </NavLink>
                         </li>
-                        <li><NavLink to='/create' activeClassName='active'>
+                        <li><NavLink to='/create' activeclassname='active'>
                             <img src={AddIcon} alt="add icon"/>
                             <p>Create Project</p>
                             </NavLink>  
