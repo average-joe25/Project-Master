@@ -10,7 +10,7 @@ export default function SideBar() {
         <div className='sidebar'>
             <div className='sidebar-component'>
                 <div className='user'>
-                    <Avatar/>
+                    <Avatar url={user.photoURL}/>
                     <p style={{margin:0}}>{user.displayName}</p>
                 </div>
                 <div className='links'>

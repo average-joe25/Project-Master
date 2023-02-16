@@ -8,6 +8,7 @@ import Signup from './pages/signup/signup.js'
 import Navbar from './components/Navbar'
 import SideBar from './components/SideBar'
 import { useAuthContext } from './hooks/useAuthContext'
+import OnlineUsers from './components/OnlineUsers'
 function App() {
   const {user,authIsReady} = useAuthContext()
   return (
@@ -24,9 +25,10 @@ function App() {
           <Route path='/login' element={!user?<Login/>:<Navigate to='/'/>}/>
           <Route path='/create' element={user?<Create/>:<Navigate to='/login'/>}/>
           <Route path='/project/:id' element={user?<Project/>:<Navigate to='/login'/>}/>
-          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/signup' element={!user?<Signup/>:<Navigate to='/'/>}/>
         </Routes>
       </div>
+      {user&&<OnlineUsers/>}
       </BrowserRouter>
     )}
     </div>

@@ -11,8 +11,8 @@ export default function Signup() {
     const {signup,isPending,signuperror}=useSignup()
     const handleSubmit=(e)=>{
         e.preventDefault()
-        console.log(email,password,displayName,thumbnail)
         signup(email,password,displayName,thumbnail)
+        
         
     }
     function handleFileChange(e) {
