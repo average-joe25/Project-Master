@@ -1,0 +1,8 @@
+.create-form{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.create-form button{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}

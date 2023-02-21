@@ -27,12 +27,12 @@
 /* online users */
 .user-list .online-user {
   display: inline-block;
-  margin-right: 10px;
+  margin: 10px;
   width: 12px;
   height: 12px;
   background: #0ebb50;
   border-radius: 50%;
-  margin-top: 2px;
+  margin-top: 13px;
 }
 .user-list p{
   padding: 5px;

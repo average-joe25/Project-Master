@@ -12,7 +12,6 @@ export const useCollection = (collection, _query, _orderBy) => {
 
   useEffect(() => {
     let ref = db.collection(collection)
-
     if (query) {
       ref = ref.where(...query)
     }
@@ -36,8 +35,6 @@ export const useCollection = (collection, _query, _orderBy) => {
 
     // unsubscribe on unmount
     return () => unsubscribe()
-
   }, [collection, query, orderBy])
-
   return { documents, error }
 }

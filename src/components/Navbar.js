@@ -12,8 +12,8 @@ export default function Navbar() {
                 <li className='logo'><a href='/'><img src={logo} alt="logo"/></a></li>
                 {!user&&<li><Link to='/login' activeclassname='active'>Login</Link></li>}
                 {!user&&<li><Link to='/signup' activeclassname='active'>Signup</Link></li>}
-                {user&&!isPending&&<li><btn className='btn' onClick={logout}>Logout</btn ></li>}
-                {user&&isPending&&<li><btn className='btn' disabled>Logging out</btn ></li>}
+                {user&&!isPending&&<li><button className='btn' onClick={logout}>Logout</button ></li>}
+                {user&&isPending&&<li><button className='btn' disabled>Logging out</button ></li>}
              </ul>
         </div>
     )

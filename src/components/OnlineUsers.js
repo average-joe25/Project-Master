@@ -11,6 +11,7 @@ export default function(){
                 <div  className='user-list-item' key={user.id}>
                     <Avatar url={user.photoURL}/>
                     <p>{user.displayName}</p>
+                    {user.online&&<span className='online-user'></span>}
                 </div>
             ))}
         </div>
