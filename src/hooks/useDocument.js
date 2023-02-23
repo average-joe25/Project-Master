@@ -7,7 +7,7 @@ export default function useDocument(collection,id) {
     //realtime data 
     useEffect(() => {
         const ref=db.collection(collection).doc(id);
-        ref.onSnapshot((Snapshot)=>{
+        const unsubcribe=ref.onSnapshot((Snapshot)=>{
             if(Snapshot.exists){
                 setDocument({...Snapshot.data(),id:Snapshot.id});
                 setError(null);
@@ -15,5 +15,7 @@ export default function useDocument(collection,id) {
                 setError('Document does not exist');
             }
         })
+        return () => unsubcribe();
     }, [collection,id]);
+    return {document,error};
 }
