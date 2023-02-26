@@ -4,5 +4,15 @@
     padding: 30px;
     resize:horizontal;
     max-width: 500px;   
-  }
-  
+}
+.project-chats .chat-input{
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: var(--title-color);
+    display: grid;
+    grid-template-columns: auto 0.4fr;
+    margin-top: 20px;
+}
+.project-chats .chat-input .text-input{
+    border: solid 2px;
+}

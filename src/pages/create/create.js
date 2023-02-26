@@ -73,7 +73,7 @@ export default function Create() {
       createdBy,
       category: category.value,
       dueDate: timestamp.fromDate(new Date(dueDate)),
-      comments: []
+      chats: []
     }
 
     await addDocument(project)
