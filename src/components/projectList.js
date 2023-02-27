@@ -9,7 +9,7 @@ export default function ProjectList({projects}) {
         <div className='project-list'>
             {projects.length===0 && <p>No projects yet!</p>}
             {projects.filter(((project)=>{
-                return (project.assignedUsersList.find((assigned) => {return assigned.id === user.id})||project.createdBy.id===user.uid); 
+                return (project.assignedUsersList.find((assigned) => {return assigned.id === user.uid})||project.createdBy.id===user.uid); 
             })).map(project => (
                 <Link key={project.id} to={'/projects/'+project.id}>
                     <h4>{project.name}</h4>

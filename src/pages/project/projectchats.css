@@ -3,7 +3,7 @@
     background-color: #fff;
     padding: 30px;
     resize:horizontal;
-    max-width: 500px;   
+    max-width: 500px;
 }
 .project-chats .chat-input{
     margin: 10px 0;
@@ -15,4 +15,9 @@
 }
 .project-chats .chat-input .text-input{
     border: solid 2px;
+}
+.project-chats .chats{
+    height: 400px;
+    margin-bottom: 20px;
+    
 }

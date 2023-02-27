@@ -6,6 +6,7 @@ import { useState } from 'react';
 import  addChats  from '../../components/addChats';
 import { timestamp } from '../../firebase/config';
 import { useAuthContext } from '../../hooks/useAuthContext'
+import ScrollToBottom from 'react-scroll-to-bottom';
 export default function ProjectChats({project}){
     const [error,setError]=useState(null);
     const {user}=useAuthContext();
@@ -30,7 +31,7 @@ export default function ProjectChats({project}){
     }
     return (<div className="project-chats">
         <h4 style={{paddingBottom:"20px",marginBottom:"20px"}}>Chats</h4>
-        {!error&&<div className="chats">
+        {!error&&<ScrollToBottom className="chats">
         {project.chats.map((chat)=>{
             return <MessageBox
                 position={chat.senderid===user.uid?"right":"left"}
@@ -40,7 +41,8 @@ export default function ProjectChats({project}){
                 date={chat.date.toDate()}
             />
         })}
-        </div>}
+        {project.chats.length===0&&<div style={{textAlign:"center"}}>No Chats Yet</div>}
+        </ScrollToBottom>}
         {!error&&<form className="chat-input" onSubmit={handleSubmit}>
         <input type="text"placeholder='Type Here...' value={message} onChange={(e)=>setMessage(e.value)}/>
         <Button text={"Send"} title="Send" />
