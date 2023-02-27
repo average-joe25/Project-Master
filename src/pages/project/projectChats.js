@@ -3,42 +3,48 @@ import "react-chat-elements/dist/main.css"
 import { MessageBox } from "react-chat-elements";
 import { Button } from 'react-chat-elements';
 import { useState } from 'react';
-import { useChats } from '../../hooks/useChats';
+import  addChats  from '../../components/addChats';
 import { timestamp } from '../../firebase/config';
 import { useAuthContext } from '../../hooks/useAuthContext'
 export default function ProjectChats({project}){
+    const [error,setError]=useState(null);
     const {user}=useAuthContext();
     const [message,setMessage]=useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submitted");
         const msg=e.target[0].value;
-        console.log(msg);
         setMessage("");
         const formatmsg={
             "text":msg,
             "date":timestamp.fromDate(new Date()),
-            "sender":user.displayName
+            "sender":user.displayName,
+            "senderid":user.uid
         }
-        const useChats(project.id)
-
-
+        const chats=project.chats;
+        chats.push(formatmsg);
+        console.log(chats,project.id);
+        const res=addChats(project.id,chats);
+        if(!res){
+            setError("Error Sending Message");
+        }
     }
     return (<div className="project-chats">
         <h4 style={{paddingBottom:"20px",marginBottom:"20px"}}>Chats</h4>
-        <div className="chats">
-        <MessageBox
-            position='left'
-            title='Burhan'
-            type='text'
-            text="Hi theredfgbnjkaljnbfgnjklkjnfbgfndmksasdnbfgfdnm !"
-            date={new Date()}
-            replyButton={true}
-        />
-        </div>
-        <form className="chat-input" onSubmit={handleSubmit}>
+        {!error&&<div className="chats">
+        {project.chats.map((chat)=>{
+            return <MessageBox
+                position={chat.senderid===user.uid?"right":"left"}
+                title={chat.sender}
+                type='text'
+                text={chat.text}
+                date={chat.date.toDate()}
+            />
+        })}
+        </div>}
+        {!error&&<form className="chat-input" onSubmit={handleSubmit}>
         <input type="text"placeholder='Type Here...' value={message} onChange={(e)=>setMessage(e.value)}/>
         <Button text={"Send"} title="Send" />
-        </form>
+        </form>}
+        {error&&<div>{error}</div>}
     </div>);
 }
