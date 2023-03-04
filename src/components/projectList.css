@@ -36,3 +36,7 @@
   width: 30px;
   height: 30px;
 }
+.project-list .name-trash{
+  display: flex;
+  justify-content: space-between;
+}
